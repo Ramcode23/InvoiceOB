@@ -3,3 +3,10 @@ c:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\obj\De
 c:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\obj\Debug\net6.0\Common.AssemblyInfoInputs.cache
 c:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\obj\Debug\net6.0\Common.AssemblyInfo.cs
 c:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\obj\Debug\net6.0\Common.csproj.CoreCompileInputs.cache
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\bin\Debug\net6.0\Common.deps.json
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\bin\Debug\net6.0\Common.dll
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\bin\Debug\net6.0\Common.pdb
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\obj\Debug\net6.0\Common.dll
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\obj\Debug\net6.0\refint\Common.dll
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\obj\Debug\net6.0\Common.pdb
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\Common\obj\Debug\net6.0\ref\Common.dll

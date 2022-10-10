@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "BXuQhpuzEj3f316eKA4pWIe6bw4LX0jOzH8lSj7Mp14=",
+  "Source": "envoiceBackEnd",
+  "BasePath": "_content/envoiceBackEnd",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
