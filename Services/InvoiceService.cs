@@ -4,34 +4,60 @@ using System.Linq;
 using System.Threading.Tasks;
 using Common;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Persistence;
 
 namespace Services
 {
     public class InvoiceService : IInvoiceService
     {
-        public Task AddAsync(Invoice entity)
+        private readonly ApplicationDbContext _context;
+        public async Task AddAsync(Invoice entity)
         {
-            throw new NotImplementedException();
+            entity.InvoiceNumber= Guid.NewGuid().ToString();
+            await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id, Invoice entity)
         {
-            throw new NotImplementedException();
+             var invoice = await GetAsync(id);
+            if (invoice != null)
+            {
+                invoice.DeleteteAt = DateTime.Now;
+                invoice.UpdatedBy = entity.UpdatedBy;
+               
+            }
+
+            await _context.SaveChangesAsync();
         }
 
-        public Task<DataCollection<Invoice>> GetAllAsync(int page, int take, IEnumerable<int> entities = null)
+        public async Task<DataCollection<Invoice>> GetAllAsync(int page, int take, IEnumerable<int> entities = null)
         {
-            throw new NotImplementedException();
+            return await _context.Invoices
+                 .Where(x => entities == null || entities.Contains(x.Id))
+                 .OrderBy(x => x.InvoiceDate)
+                 .GetPagedAsync(page, take);
         }
 
-        public Task<Invoice> GetAsync(int id)
+        public async Task<Invoice> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Invoices.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public Task UpdateAsync(int id, Invoice entity)
+        public async Task UpdateAsync(int id, Invoice entity)
         {
-            throw new NotImplementedException();
+            var invoice = await GetAsync(id);
+            if (invoice != null)
+            {
+                invoice.Decription = entity.Decription;
+                invoice.UpdatedAt = DateTime.Now;
+                invoice.UpdatedBy = entity.UpdatedBy;
+                invoice.InvoiceLines = new List<InvoiceLine>();
+                invoice.InvoiceLines = entity.InvoiceLines;
+            }
+
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -1,5 +1,12 @@
+using Domain.Indentity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Persistence;
+using Services;
+ using  envoiceBackEnd.utilities;
+using System.Security.Claims;
+using envoiceBackEnd;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,11 +26,78 @@ builder.Services.AddDbContextPool<ApplicationDbContext>
 
                 }
             );
-
+            //7. Add Service of Jwt Autorization
+builder.Services.AddJwtTokenServices(builder.Configuration);
+ builder.Services.AddScoped<ICompanyService,CompanyService>();
+builder.Services.AddScoped<IInvoiceService,InvoiceService>(); 
+builder.Services.AddScoped<IUserService,UserService>();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+//8. Add Authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("UserOnlyPolicy", policy => policy.RequireClaim("role", "user"));
+});
+
+//9 TODO: Config to take care of  Autorization of  JWT
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "JWT Authorization Header using Bearer Scheme",
+
+
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+             new OpenApiSecurityScheme
+             {
+                 Reference= new OpenApiReference
+                 {
+                     Type=ReferenceType.SecurityScheme,
+                     Id="Bearer"
+                 }
+             },
+              new string[]{}
+
+        }
+
+
+    });
+
+});
+
+//5. CORS configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "CorsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin();
+        builder.AllowAnyMethod();
+        builder.AllowAnyHeader();
+
+    });
+
+});
+
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                             .AddEntityFrameworkStores<ApplicationDbContext>()
+                             .AddRoles<IdentityRole>()
+                             .AddDefaultTokenProviders();
+
+
 
 var app = builder.Build();
 
@@ -39,5 +113,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+// 6 Tell app to user cors
+app.UseCors("CorsPolicy");
 app.Run();

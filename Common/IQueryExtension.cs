@@ -12,7 +12,7 @@ namespace Common
           Task<T> GetAsync(int id);
           Task AddAsync(T entity);
           Task UpdateAsync(int id,T entity);
-          Task DeleteAsync(int id);
+          Task DeleteAsync(int id,T entity);
 
     }
 

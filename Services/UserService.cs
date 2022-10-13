@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
+
 using System.Threading.Tasks;
 using Domain.Indentity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
+
 using Persistence;
 using Services.DTOs.User;
+using Microsoft.Extensions.Configuration;
+using System.Security.Claims;
 
 namespace Services
 {
@@ -17,7 +19,7 @@ namespace Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ClaimsIdentity _claimsIdentity;
+      
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
 
@@ -25,7 +27,6 @@ namespace Services
                             UserManager<ApplicationUser> userManager,
                             RoleManager<IdentityRole> roleManager,
                             SignInManager<ApplicationUser> signInManager,
-                            ClaimsIdentity claimsIdentity,
                             ApplicationDbContext context,
                             IConfiguration configuration
             )
@@ -34,19 +35,25 @@ namespace Services
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
-            _claimsIdentity = claimsIdentity;
             _context = context;
             _configuration = configuration;
 
         }
-        public Task AddUserToRoleAsync(ApplicationUser user, string roleName)
+        public async Task AddUserToRoleAsync(ApplicationUser user, string roleName)
         {
-            throw new NotImplementedException();
+           await _userManager.AddToRoleAsync(user, roleName);
         }
 
-        public Task CheckRoleAsync(string roleName)
+        public async Task CheckRoleAsync(string roleName)
         {
-            throw new NotImplementedException();
+         var roleExists = await _roleManager.RoleExistsAsync(roleName);
+            if (!roleExists)
+            {
+                await _roleManager.CreateAsync(new IdentityRole
+                {
+                    Name = roleName
+                });
+            }
         }
 
         public async Task<IdentityResult> CreateAdminAsync(UserRegister registeruser)
@@ -66,17 +73,7 @@ namespace Services
             return rest;
         }
 
-        public async Task<ApplicationUser> GetAuthenticatedUserAsync(ClaimsPrincipal User)
-        {
-            var authenticatedUser = User.Identities.Select(c => c.Claims).ToArray()[0].ToArray()[0].Value;
-
-            return await _userManager.FindByEmailAsync(authenticatedUser);
-        }
-
-        public string GetAuthenticaedUserName(ClaimsPrincipal User)
-        {
-             return User.Identities.Select(c => c.Claims).ToArray()[0].ToArray()[0].Value;
-        }
+     
 
         public async Task<IList<Claim>> GetRoleAsync(ApplicationUser user)
         {
@@ -103,6 +100,12 @@ namespace Services
                 await _userManager.AddClaimAsync(user, new Claim("role", "user"));
 
             return rest;
+        }
+
+        public async Task<ApplicationUser> GetUserByEmailAsync(string email)
+        {
+            var user = await _userManager.FindByNameAsync(email);
+            return user;
         }
     }
 }

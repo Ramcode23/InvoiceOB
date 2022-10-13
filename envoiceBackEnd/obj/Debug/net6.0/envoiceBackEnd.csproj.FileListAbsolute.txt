@@ -72,3 +72,7 @@ C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\envoiceBackEn
 C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\envoiceBackEnd\obj\Debug\net6.0\envoiceBackEnd.pdb
 C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\envoiceBackEnd\obj\Debug\net6.0\envoiceBackEnd.genruntimeconfig.cache
 C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\envoiceBackEnd\obj\Debug\net6.0\ref\envoiceBackEnd.dll
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\envoiceBackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\envoiceBackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\envoiceBackEnd\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\ramc2\OneDrive\Escritorio\Courses\Bootcamp\C#\Envoicement\envoiceBackEnd\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

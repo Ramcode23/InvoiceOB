@@ -11,13 +11,14 @@ namespace Services
 {
     public interface IUserService
     {
-         Task<ApplicationUser> GetAuthenticatedUserAsync(ClaimsPrincipal User);
-        string GetAuthenticaedUserName(ClaimsPrincipal User);
+     
+   
         Task<SignInResult> PasswordSignInAsync(UserLogin credentials);
         Task<IdentityResult> RegisterUserAsync(UserRegister registeruser);
         Task<IdentityResult> CreateAdminAsync(UserRegister registeruser);
         Task AddUserToRoleAsync(ApplicationUser user, string roleName);
         Task CheckRoleAsync(string roleName);
         Task<IList<Claim>> GetRoleAsync(ApplicationUser user);
+          Task<ApplicationUser> GetUserByEmailAsync(string email);
     }
 }
