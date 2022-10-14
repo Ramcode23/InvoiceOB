@@ -103,14 +103,11 @@ namespace envoiceBackEnd.Controllers
                  _jwtSettings);
 
 
-                    var msj = _stringLocalizer.GetString("Welcome").Value ?? String.Empty;
-
-
                     return Ok(new
                     {
 
                         Token = Token,
-                        Msj = msj
+                        Msj = "Welcome"
                     });
                 }
                 else
@@ -124,7 +121,7 @@ namespace envoiceBackEnd.Controllers
         }
 
         [HttpPost("createmanager")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
+     // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<UserLogin>> CreateAdmin([FromBody] UserRegister registeruser)
         {
             var Token = new UserTokens();
@@ -147,14 +144,13 @@ namespace envoiceBackEnd.Controllers
                  _jwtSettings);
 
 
-                    var msj = _stringLocalizer.GetString("Welcome").Value ?? String.Empty;
-
+                   
 
                     return Ok(new
                     {
 
                         Token = Token,
-                        Msj = msj
+                        Msj = "Welcome"
                     });
                 }
                 else

@@ -94,8 +94,18 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                              .AddEntityFrameworkStores<ApplicationDbContext>()
-                             .AddRoles<IdentityRole>()
+                            .AddRoles<IdentityRole>()
                              .AddDefaultTokenProviders();
+      // Identity configuration
+        builder.Services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+            });
 
 
 
@@ -109,8 +119,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 // 6 Tell app to user cors
