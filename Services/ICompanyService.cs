@@ -11,6 +11,6 @@ namespace Services
 {
     public interface ICompanyService : IQueryExtension<Company>
     {
-
+    Task<List<Company>> GetListAsync(string field);
     }
 }

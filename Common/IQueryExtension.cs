@@ -9,6 +9,7 @@ namespace Common
     public interface IQueryExtension<T>
     {
           Task<DataCollection<T>> GetAllAsync(int page, int take, IEnumerable<int> entities = null);
+    
           Task<T> GetAsync(int id);
           Task AddAsync(T entity);
           Task UpdateAsync(int id,T entity);

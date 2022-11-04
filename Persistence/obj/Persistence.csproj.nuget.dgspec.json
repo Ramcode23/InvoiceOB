@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\Persistence.csproj": {}
+    "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\Persistence.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj": {
+    "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj",
+        "projectUniqueName": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj",
+        "projectPath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\ramc2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\obj\\",
+        "outputPath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -70,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj": {
+    "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj",
+        "projectUniqueName": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj",
+        "projectPath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\ramc2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\obj\\",
+        "outputPath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -100,8 +100,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj": {
-                "projectPath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj"
+              "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj": {
+                "projectPath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Common\\Common.csproj"
               }
             }
           }
@@ -148,14 +148,14 @@
         }
       }
     },
-    "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\Persistence.csproj": {
+    "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\Persistence.csproj",
+        "projectPath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\Persistence.csproj",
         "packagesPath": "C:\\Users\\ramc2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\obj\\",
+        "outputPath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -178,8 +178,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj"
+              "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj": {
+                "projectPath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Domain\\Domain.csproj"
               }
             }
           }

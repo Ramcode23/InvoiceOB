@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+2tl2Fmqc+n7BZrdJ5uB1KHq6GT1+rZnnuW1e9FMBDaRgrTTesO1/KdAugVy69MdfhX8EMQUThbkOzmcJCqo/w==",
+  "dgSpecHash": "wldYzmgGlfH4fSfcauEO73ryKsRbqwb4rjymvxkpvaRAvKUwiTtE+1kx30G/vAN0cOqIA0xkJ/XsdP9w6thFlw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\envoiceBackEnd\\envoiceBackEnd.csproj",
+  "projectFilePath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\envoiceBackEnd\\envoiceBackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ramc2\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\ramc2\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

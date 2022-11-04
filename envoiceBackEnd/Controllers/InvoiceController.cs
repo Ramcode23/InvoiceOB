@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Common;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using Services.DTOs.Invoice;
@@ -13,20 +15,23 @@ namespace envoiceBackEnd.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class InvoiceApiController : ControllerBase
+    public class InvoiceController : ControllerBase
     {
         private readonly IInvoiceService _invoiceService;
         private readonly IMapper _mapper;
-
-        public InvoiceApiController(IInvoiceService invoiceService,
+        private readonly IUserService _userService;
+        public InvoiceController(IInvoiceService invoiceService,
+                                 IUserService userService,
                                     IMapper mapper)
         {
             _invoiceService = invoiceService;
+            _userService = userService;
             _mapper = mapper;
         }
 
 
         [HttpGet()]
+     //   [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<DataCollection<InvoiceDto>> GetAll(int page = 1, int take = 10, string? ids = null)
         {
             IEnumerable<int> invoices = null;
@@ -34,25 +39,27 @@ namespace envoiceBackEnd.Controllers
             {
                 invoices = ids.Split(',').Select(x => Convert.ToInt32(x));
             }
-            var collection = await _invoiceService.GetAllAsync(page, take,invoices);
+            var collection = await _invoiceService.GetAllAsync(page, take, invoices);
 
             return _mapper.Map<DataCollection<InvoiceDto>>(collection);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<InvoiceDto>> GetCompanyById(int id)
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult<InvoiceDto>> GetInvoiceById(int id)
         {
-            var company = await _invoiceService.GetAsync(id);
-            if (company != null)
+            var invoice = await _invoiceService.GetAsync(id);
+            if (invoice != null)
             {
-                return _mapper.Map<InvoiceDto>(company);
+                return _mapper.Map<InvoiceDto>(invoice);
             }
 
             return NotFound();
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostCompany([FromBody] InvoiceCreateDTo model)
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> PostInvoice([FromBody] InvoiceCreateDTo model)
         {
 
             try
@@ -62,7 +69,7 @@ namespace envoiceBackEnd.Controllers
                     return BadRequest();
                 }
                 var invoice = _mapper.Map<Invoice>(model);
-
+                invoice.CreatedBy = await _userService.GetUserByEmailAsync(User.Identity.Name);
                 await _invoiceService.AddAsync(invoice);
                 return Ok(model);
             }
@@ -74,7 +81,8 @@ namespace envoiceBackEnd.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCompany(int id, InvoiceUpdateDTo model)
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> PutInvoice(int id, InvoiceUpdateDTo model)
         {
 
             if (id != model.Id)
@@ -82,7 +90,7 @@ namespace envoiceBackEnd.Controllers
                 return BadRequest();
             }
             var invoice = _mapper.Map<Invoice>(model);
-          
+            invoice.UpdatedBy = await _userService.GetUserByEmailAsync(User.Identity.Name);
             await _invoiceService.UpdateAsync(id, invoice);
 
             return Ok();

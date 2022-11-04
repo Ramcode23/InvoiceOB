@@ -24,14 +24,16 @@ namespace Services
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id, Company entity)
+        public async Task DeleteAsync(int id, Company entity)
         {
-            throw new NotImplementedException();
+            entity.IsDeleted = true;
+            await _context.SaveChangesAsync();
         }
 
         public async Task<DataCollection<Company>> GetAllAsync(int page, int take, IEnumerable<int> entities = null)
         {
             return await _context.Companies
+            .Where(x => x.IsDeleted==false)
                     .Where(x => entities == null || entities.Contains(x.Id))
                     .OrderBy(x => x.Name)
                     .GetPagedAsync(page, take);
@@ -43,6 +45,11 @@ namespace Services
             return await _context.Companies.FirstOrDefaultAsync(c => c.Id == id);
         }
 
+        public async Task<List<Company>> GetListAsync(string field)
+        {
+            return await _context.Companies.Where(x=>x.Name.Contains(field)).ToListAsync();
+        }
+
         public async Task UpdateAsync(int id, Company entity)
         {
             var company = await GetAsync(id);
@@ -52,8 +59,10 @@ namespace Services
                 company.UpdatedAt = DateTime.Now;
                 company.UpdatedBy = entity.UpdatedBy;
             }
-            
+
             await _context.SaveChangesAsync();
         }
+
+
     }
 }

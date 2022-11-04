@@ -15,15 +15,23 @@ namespace envoiceBackEnd.utilities
     {
         public AutoMapperProfiles()
         {
-            CreateMap<DataCollection<Company>,DataCollection<CompanyDTo>>().ReverseMap();
-            CreateMap<DataCollection<Company>, DataCollection<CompanyDTo>>();
-            CreateMap<Company, CompanyCreateDto>().ReverseMap();
-            CreateMap<Company, CompanyCreateDto>();
+            CreateMap<Company, CompanyCreateDto>().PreserveReferences().ReverseMap();
+            CreateMap<Company, CompanyCreateDto>().PreserveReferences();
+            CreateMap<Company, CompanyDTo>().PreserveReferences().ReverseMap();
+            CreateMap<Company, CompanyDTo>().PreserveReferences();
+            CreateMap<DataCollection<Company>,DataCollection<CompanyDTo>>().PreserveReferences();
 
-            CreateMap<DataCollection<Invoice>,DataCollection<InvoiceDto>>().ReverseMap();
-            CreateMap<DataCollection<Invoice>, DataCollection<InvoiceDto>>();
-            CreateMap<Invoice, InvoiceCreateDTo>().ReverseMap();
-            CreateMap<Invoice, InvoiceCreateDTo>();
+
+            CreateMap<Invoice, InvoiceDto>().PreserveReferences().ReverseMap();
+            CreateMap<Invoice, InvoiceDto>().PreserveReferences();
+
+            CreateMap<DataCollection<Invoice>, DataCollection<InvoiceDto>>().PreserveReferences();  
+
+            CreateMap<Invoice, InvoiceCreateDTo>().PreserveReferences().ReverseMap();
+            CreateMap<Invoice, InvoiceCreateDTo>().PreserveReferences();
+
+            CreateMap<InvoiceLine, InvoiceLineDTo>().PreserveReferences().ReverseMap();
+            CreateMap<InvoiceLine, InvoiceLineDTo>().PreserveReferences();
         }
     }
 }

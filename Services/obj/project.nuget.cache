@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xD/JVDAWK+byLr3LXqQg/bBw6e1WSzVQ2Hcz9KNwCkYX8VEi+Ro1ZEtV3l62+he1BKW4+Iyvq8zUPFHCkPd+Tg==",
+  "dgSpecHash": "IgNgwaSaxcx9SgmXHaSqHF6ujgd32SeheGwrIX+PVzG/7XfZzD63ZAAdbEolzSnVRo8s3DfNnnXNJ0PoazJQJA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Services\\Services.csproj",
+  "projectFilePath": "c:\\Users\\ramc2\\OneDrive\\Escritorio\\Courses\\Bootcamp\\C#\\Envoicement\\Services\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ramc2\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\ramc2\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

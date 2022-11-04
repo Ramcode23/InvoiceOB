@@ -12,21 +12,49 @@ namespace Services
     public class InvoiceService : IInvoiceService
     {
         private readonly ApplicationDbContext _context;
+
+        public InvoiceService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public async Task AddAsync(Invoice entity)
         {
-            entity.InvoiceNumber= Guid.NewGuid().ToString();
-            await _context.AddAsync(entity);
+            entity.InvoiceNumber = Guid.NewGuid().ToString();
+            var newInvoice = new Invoice()
+            {
+                Decription = entity.Decription,
+                InvoiceDate = entity.InvoiceDate,
+                InvoiceNumber = Guid.NewGuid().ToString(),
+                InvoiceLines = new List<InvoiceLine>(),
+                CreatedAt = DateTime.UtcNow,
+                CreatedBy = entity.CreatedBy
+
+            };
+            await _context.AddAsync(newInvoice);
             await _context.SaveChangesAsync();
+            
+            var invoiceLines = entity.InvoiceLines.Select(lines => new InvoiceLine
+            {
+                Description = lines.Description,
+                Invoice = newInvoice,
+                Price = lines.Price,
+                Quality = lines.Quality
+            }).ToList();
+
+
+           await _context.AddRangeAsync(invoiceLines);
+               await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id, Invoice entity)
         {
-             var invoice = await GetAsync(id);
+            var invoice = await GetAsync(id);
             if (invoice != null)
             {
                 invoice.DeleteteAt = DateTime.Now;
                 invoice.UpdatedBy = entity.UpdatedBy;
-               
+
             }
 
             await _context.SaveChangesAsync();
@@ -35,6 +63,7 @@ namespace Services
         public async Task<DataCollection<Invoice>> GetAllAsync(int page, int take, IEnumerable<int> entities = null)
         {
             return await _context.Invoices
+                 .Where(x => x.IsDeleted == false)
                  .Where(x => entities == null || entities.Contains(x.Id))
                  .OrderBy(x => x.InvoiceDate)
                  .GetPagedAsync(page, take);
